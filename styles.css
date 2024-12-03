@@ -1,7 +1,7 @@
 /* General Body Styling */
 body {
     font-family: 'Arial', sans-serif;
-    background-image: url('paws-background.png'); /* Paw-pattern background */
+    background-image: url('pawprint.jpg'); /* Paw-pattern background */
     background-repeat: repeat;
     background-size: 150px;
     margin: 0;
@@ -76,4 +76,12 @@ nav a:hover {
     margin-top: 20px;
     font-size: 1.5em;
     color: #333;
+}
+
+/* About Page Family Photo */
+.family-photo {
+    max-width: 50%;
+    height: auto;
+    border-radius: 10px;
+    margin: 20px 0;
 }
