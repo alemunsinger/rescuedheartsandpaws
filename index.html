@@ -4,80 +4,100 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rescue Hearts and Paws</title>
-    
-    <!-- Link to Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Dancing+Script&display=swap" rel="stylesheet">
 
-    <!-- Link to External CSS -->
+    <!-- Link to Google Fonts for Yuji Mai font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Yuji+Mai&display=swap" rel="stylesheet">
+
+    <!-- Link to styles.css -->
     <link rel="stylesheet" href="styles.css">
+
+    <!-- Link to Google Fonts for cute fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Dancing+Script&display=swap" rel="stylesheet">
 </head>
 <body>
+    <header>
+        <h1>Find Your Perfect Dog Match!</h1>
+        <p>Take this quiz to discover which dog breed matches your personality and lifestyle.</p>
+        <nav>
+            <a href="about.html">About Us</a>
+        </nav>
+    </header>
 
-<header>
-    <h1>Rescue Hearts and Paws</h1>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="about.html">About Us</a>
-    </nav>
-    <p>Take this quiz to discover which dog breed matches your personality and lifestyle.</p>
-</header>
+    <div class="container">
+        <form id="quizForm">
+            <div class="question">
+                <label>1. How active are you on a daily basis?</label><br>
+                <input type="radio" name="activity" value="low"> Low Activity<br>
+                <input type="radio" name="activity" value="medium"> Medium Activity<br>
+                <input type="radio" name="activity" value="high"> High Activity<br>
+            </div>
 
-<div class="container">
-    <form id="quizForm">
-        <div class="question">
-            <label>1. How active are you on a daily basis?</label><br>
-            <input type="radio" name="activity" value="low"> Low Activity<br>
-            <input type="radio" name="activity" value="medium"> Medium Activity<br>
-            <input type="radio" name="activity" value="high"> High Activity<br>
-        </div>
-        
-        <div class="question">
-            <label>2. Do you prefer a dog that is...</label><br>
-            <input type="radio" name="preference" value="independent"> Independent<br>
-            <input type="radio" name="preference" value="affectionate"> Affectionate<br>
-            <input type="radio" name="preference" value="energetic"> Energetic<br>
-        </div>
-        
-        <div class="question">
-            <label>3. What size dog do you prefer?</label><br>
-            <input type="radio" name="size" value="small"> Small<br>
-            <input type="radio" name="size" value="medium"> Medium<br>
-            <input type="radio" name="size" value="large"> Large<br>
-        </div>
-        
-        <button type="button" class="submit-btn" onclick="showResult()">Submit</button>
-    </form>
+            <div class="question">
+                <label>2. Do you prefer a dog that is...</label><br>
+                <input type="radio" name="preference" value="independent"> Independent<br>
+                <input type="radio" name="preference" value="affectionate"> Affectionate<br>
+                <input type="radio" name="preference" value="energetic"> Energetic<br>
+            </div>
 
-    <div class="result" id="result"></div>
-</div>
+            <div class="question">
+                <label>3. What size dog do you prefer?</label><br>
+                <input type="radio" name="size" value="small"> Small<br>
+                <input type="radio" name="size" value="medium"> Medium<br>
+                <input type="radio" name="size" value="large"> Large<br>
+            </div>
 
-<script>
-    function showResult() {
-        const form = document.forms['quizForm'];
-        const activity = form['activity'].value;
-        const preference = form['preference'].value;
-        const size = form['size'].value;
+            <button type="button" class="submit-btn" onclick="showResult()">Submit</button>
+        </form>
 
-        if (activity && preference && size) {
-            let resultText = "Based on your answers, we recommend the following dog breed(s): ";
+        <div class="result" id="result"></div>
+    </div>
 
-            // Match based on answers (example logic)
-            if (activity === "high" && preference === "energetic" && size === "medium") {
-                resultText += "Border Collie, Australian Shepherd.";
-            } else if (activity === "low" && preference === "independent" && size === "small") {
-                resultText += "Chihuahua, Shih Tzu.";
-            } else if (activity === "medium" && preference === "affectionate" && size === "large") {
-                resultText += "Golden Retriever, Labrador Retriever.";
+    <script>
+        function showResult() {
+            const form = document.forms['quizForm'];
+            const activity = form['activity'].value;
+            const preference = form['preference'].value;
+            const size = form['size'].value;
+
+            if (activity && preference && size) {
+                let resultText = "Based on your answers, here are some recommended dog breeds: ";
+
+                if (activity === "low") {
+                    if (preference === "independent" && size === "small") {
+                        resultText += "Chihuahua, Shih Tzu.";
+                    } else if (preference === "independent" && size === "medium") {
+                        resultText += "Basset Hound, Bulldog.";
+                    } else if (preference === "independent" && size === "large") {
+                        resultText += "Greyhound, Mastiff.";
+                    } else if (preference === "affectionate") {
+                        resultText += "Cavalier King Charles Spaniel, Havanese.";
+                    }
+                } else if (activity === "medium") {
+                    if (preference === "affectionate" && size === "small") {
+                        resultText += "Pug, Miniature Schnauzer.";
+                    } else if (preference === "affectionate" && size === "medium") {
+                        resultText += "Cocker Spaniel, Border Terrier.";
+                    } else if (preference === "affectionate" && size === "large") {
+                        resultText += "Golden Retriever, Labrador Retriever.";
+                    }
+                } else if (activity === "high") {
+                    if (preference === "energetic" && size === "small") {
+                        resultText += "Jack Russell Terrier, Miniature Pinscher.";
+                    } else if (preference === "energetic" && size === "medium") {
+                        resultText += "Australian Shepherd, Border Collie.";
+                    } else if (preference === "energetic" && size === "large") {
+                        resultText += "German Shepherd, Dalmatian.";
+                    }
+                }
+
+                resultText += " Contact your local shelter for availability!";
+                document.getElementById('result').innerHTML = resultText;
             } else {
-                resultText += "Please consult your local shelter for a better match.";
+                document.getElementById('result').innerHTML = "Please answer all the questions.";
             }
-
-            document.getElementById('result').innerHTML = resultText;
-        } else {
-            document.getElementById('result').innerHTML = "Please answer all the questions.";
         }
-    }
-</script>
-
+    </script>
 </body>
 </html>
